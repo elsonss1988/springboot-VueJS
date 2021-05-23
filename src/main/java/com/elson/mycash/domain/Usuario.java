@@ -1,5 +1,7 @@
 package com.elson.mycash.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,9 +13,10 @@ public class Usuario {
 
     @Column(length = 100)
     private  String email;
-
+    @JsonIgnore
     private String senha;
 
+    @Enumerated(EnumType.STRING)
     private UsuarioRole role;
 
     public Integer getId() {

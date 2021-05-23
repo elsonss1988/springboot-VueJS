@@ -1,13 +1,17 @@
 package com.elson.mycash.web.dto.error;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 
-import java.time.LocalDate;
+import javax.validation.constraints.Null;
+
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ApiError {
 
     private HttpStatus status;

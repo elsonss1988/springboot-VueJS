@@ -1,7 +1,9 @@
 package com.elson.mycash;
 
+import com.elson.mycash.service.UsuarioService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class MycashApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MycashApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(MycashApplication.class, args);
+		UsuarioService service=context.getBean(UsuarioService.class);
+		service.registraUsuarioAdmin("admin@mycash.com","admin");
 	}
 	@GetMapping("/ola")
 	public String Hello(@RequestParam("nome") String nome){
