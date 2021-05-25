@@ -3,6 +3,10 @@ package com.elson.mycash.service;
 import com.elson.mycash.domain.Lancamento;
 import com.elson.mycash.repository.LancamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +19,12 @@ public class LancamentoService {
     @Autowired
     private LancamentoRepository repo;
 
-    public List<Lancamento> todos(){
-        return repo.findAll();
+    //public List<Lancamento> todos(){
+    //    return repo.findAll();
+    //}
+
+    public Page<Lancamento> todos(Pageable pageable){
+        return repo.findAll(pageable);
     }
 
     public Lancamento apenasum(Integer id){

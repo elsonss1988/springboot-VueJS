@@ -16,6 +16,7 @@ public class MycashApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(MycashApplication.class, args);
 		UsuarioService service=context.getBean(UsuarioService.class);
 		service.registraUsuarioAdmin("admin@mycash.com","admin");
+		service.save("user@mycash.com","user" );
 	}
 	@GetMapping("/ola")
 	public String Hello(@RequestParam("nome") String nome){

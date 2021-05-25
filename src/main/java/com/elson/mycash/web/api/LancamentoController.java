@@ -4,10 +4,13 @@ import com.elson.mycash.domain.Lancamento;
 import com.elson.mycash.repository.LancamentoRepository;
 import com.elson.mycash.service.LancamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,9 +23,14 @@ public class LancamentoController {
     @Autowired
     private LancamentoService service;
     @GetMapping
-    public List<Lancamento> todos(){
-        return service.todos();
+//    public List<Lancamento> todos(){
+//        return service.todos();
+//    }
+
+    public Page<Lancamento> todos(Pageable pageable){
+        return service.todos(pageable);
     }
+
     @GetMapping("/{id}")
     public Lancamento apenasum(@PathVariable Integer id){
         return service.apenasum(id);
